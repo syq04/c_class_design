@@ -1,5 +1,5 @@
 #include<bits/stdc++.h>
-#pragma warning(disable:4996)
+//#pragma warning(disable:4996)
 using namespace std;
 const int  W = 4,H = 4;//height,width,number of expressman
 int N;
