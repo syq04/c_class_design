@@ -75,6 +75,6 @@ void print()//use to test
 int	 main()
 {
 	initialize();
-	print();
+	//print();
 	return 0;
 }
