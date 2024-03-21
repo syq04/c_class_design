@@ -21,31 +21,47 @@ void initialize()
 		for (int j = 1; j <= W; j++,n++)
 			w.number[i][j] = n;
 	//size
+	for (int i = 1; i <=W; i++)
+		w.size[1][i] ='S';
 	for (int i = 1; i <= W; i++)
-		w.size[1][W] ='s';
+		w.size[2][i] = 'N';
 	for (int i = 1; i <= W; i++)
-		w.size[2][W] = 'N';
-	for (int i = 1; i <= W; i++)
-		w.size[3][W] ='B';
-
+		w.size[3][i] ='B';
+	//state
+	for (int i = 1; i <= H; i++)
+		for (int j = 1; j <= W; j++, n++)
+			w.state[i][j] = true;
 	return;
 }
 
-void print(int n, int m)
+void print()//use to test
 {
-	for (int i = 1; i <= n; i++)
+	for (int i = 1; i <= H; i++)
 	{
-		for (int j = 1; j <= m; j++)
+		for (int j = 1; j <= W; j++)
 		{
-			cout << w.size[i][j]<<' ';
+			cout << w.number[i][j] << ' ';
 		}
 		cout << endl;
 	}
+	for (int i = 1; i <= H; i++)
+	{
+		for (int j = 1; j <= W; j++)
+			cout<<w.size[i][j]<<' ';
+		cout << endl;
+	}
+	for (int i = 1; i <= H; i++)
+	{
+		for (int j = 1; j <= W; j++)
+			cout << w.state[i][j] << ' ';
+		cout << endl;
+	}
+	return ;
 }
 
 int	 main()
 {
 	initialize();
-	print(H, W);
+	//print();
 	return 0;
 }
