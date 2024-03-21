@@ -22,11 +22,11 @@ void initialize()
 			w.number[i][j] = n;
 	//size
 	for (int i = 1; i <= W; i++)
-		w.size[1][w] = 'S';
+		w.size[1][W] ='s';
 	for (int i = 1; i <= W; i++)
-		w.size[2][w] = 'N';
+		w.size[2][W] = 'N';
 	for (int i = 1; i <= W; i++)
-		w.size[3][w] = 'B';
+		w.size[3][W] ='B';
 
 	return;
 }
