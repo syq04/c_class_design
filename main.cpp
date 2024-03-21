@@ -1,5 +1,5 @@
 #include<bits/stdc++.h>
-//#pragma warning(disable:4996)
+//#pragma warning(disable:4996)//use in visual code
 using namespace std;
 const int  W = 4,H = 4;//height,width,number of expressman
 int N;
@@ -40,8 +40,7 @@ void initialize()
 
 	freopen("expressman.in", "r", stdin);
 	cin >> N;
-	cout<<N<<endl;
-	
+
 	for (int i = 1; i <= N; i++)
 		cin >> expm[i].name;
 	return;
@@ -77,6 +76,6 @@ void print()//use to test
 int	 main()
 {
 	initialize();
-	print();
+	//print();//use to test
 	return 0;
 }
