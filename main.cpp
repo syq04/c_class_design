@@ -15,6 +15,9 @@ struct window{
 */
 struct expressman {
 	string name;
+	int phone_number;
+	int password;
+	string company;
 }expm[10000];//maxn
 
 void initialize()
@@ -42,7 +45,7 @@ void initialize()
 	cin >> N;
 
 	for (int i = 1; i <= N; i++)
-		cin >> expm[i].name;
+		cin >> expm[i].name>>expm[i].company;
 	return;
 }
 
