@@ -4,10 +4,10 @@ using namespace std;
 const int  W = 4,H = 4;//height,width,number of expressman
 int N;
 struct window{
-	int number[W + 1][H + 1];
-	char size[W + 1][H + 1];
-	bool state[W + 1][H + 1];
-}win;
+	int number;
+	string size;
+	bool state;
+}win[W+1][W+1];
 /*	4*4
 *	small   small   small   small
 *	normal  normal  normal  normal
@@ -16,7 +16,7 @@ struct window{
 struct expressman {
 	string name;
 	int phone_number;
-	int password;
+	string password;
 	string company;
 }expm[10000];//maxn
 
@@ -27,25 +27,31 @@ void initialize()
 	int n = 1;
 	for(int i=1;i<=H;i++)
 		for (int j = 1; j <= W; j++,n++)
-			win.number[i][j] = n;
+			win[i][j].number = n;
 	//size
 	for (int i = 1; i <=W; i++)
-		win.size[1][i] ='S';
+		win[1][i].size ='Small';
 	for (int i = 1; i <= W; i++)
-		win.size[2][i] = 'N';
+		win[2][i].size = 'Normal';
 	for (int i = 1; i <= W; i++)
-		win.size[3][i] ='B';
+		win[3][i] .size='Big';
 	//state
 	for (int i = 1; i <= H; i++)
 		for (int j = 1; j <= W; j++, n++)
-			win.state[i][j] = true;
+			win[i][j] .state= true;
 	//expm----
 
 	freopen("expressman.in", "r", stdin);
 	cin >> N;
-
+	
 	for (int i = 1; i <= N; i++)
-		cin >> expm[i].name>>expm[i].company;
+	{
+		string phone_n_temp;
+		cin>>expm[i].name>>expm[i].company>>phone_n_temp>>expm[i].password;
+		expm[i].phone_number=(int)phone_n_temp;
+
+	}
+	fclose(stdin);
 	return;
 }
 
@@ -55,30 +61,30 @@ void print()//use to test
 	{
 		for (int j = 1; j <= W; j++)
 		{
-			cout << win.number[i][j] << ' ';
+			cout << win[i][j].number << ' ';
 		}
 		cout << endl;
 	}
 	for (int i = 1; i <= H; i++)
 	{
 		for (int j = 1; j <= W; j++)
-			cout<<win.size[i][j]<<' ';
+			cout<<win[i][j].size<<' ';
 		cout << endl;
 	}
 	for (int i = 1; i <= H; i++)
 	{
 		for (int j = 1; j <= W; j++)
-			cout << win.state[i][j] << ' ';
+			cout << win[i][j].state << ' ';
 		cout << endl;
 	}
 	for (int i = 1; i <= N; i++)
-		cout<< expm[i].name<<' ';
+		cout<< expm[i].name<<' '<<expm[i].phone_number<<' '<<expm[i].company<<' '<<expm[i].password<<endl;
 	return ;
 }
 
 int	 main()
 {
 	initialize();
-	//print();//use to test
+	print();//use to test
 	return 0;
 }
