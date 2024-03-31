@@ -27,6 +27,11 @@ struct expressman {
 	string company;
 }expm[10000];
 
+
+int getRand(int min, int max) {
+    return ( rand() % (max - min + 1) ) + min ;
+}
+
 void initialize()//use to initialize
 {
 	//window----------
@@ -153,14 +158,10 @@ void put_in()
 		put_in();
 	}
 	win[x][y].state=false;
-	print_state();
+	//print_state();
 	cout<<endl<<"请输入顾客手机尾号后4位：";
 	cin>>win[x][y].phone_number;
-
-	default_random_engine e;
-    uniform_int_distribution<int> u(1000,9999);  //左闭右闭区间
-    e.seed(time(0));
-	win[x][y].password=u(e);
+	win[x][y].password=getRand(1000,9999);
 	cout<<endl<<"顾客取件码为:"<<win[x][y].password;
 	password_out();
 	cout<<"存入完成";
@@ -208,8 +209,10 @@ void get_out(int x,int y)
 		win[x][y].state=true;
 		win[x][y].phone_number=0;
 		win[x][y].password=0;
+		password_out();
 		cout<<endl<<"请取走您的包裹";
 		Sleep(1000);
+		return;
 	}
 }
 
