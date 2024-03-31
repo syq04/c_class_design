@@ -1,4 +1,5 @@
 #include<bits/stdc++.h>
+#include <windows.h>
 //#pragma warning(disable:4996)//use in visual code
 using namespace std;
 
@@ -45,14 +46,14 @@ void initialize()//use to initialize
 		for (int j = 1; j <= W; j++, n++)
 			win[i][j] .state= true;
 	//expm----
-
-	freopen("expressman.in", "r", stdin);
-	cin >> N;
+	ifstream infile; 
+   	infile.open("expressman.in");
+	infile>>N;
 	
 	for (int i = 1; i <= N; i++)
-		cin>>expm[i].name>>expm[i].company>>expm[i].password>>expm[i].phone_number;
-	fclose(stdin);
-	return;
+		infile>>expm[i].name>>expm[i].company>>expm[i].password>>expm[i].phone_number;
+	infile.close();
+	return ;
 }
 
 void print()//use to test
@@ -80,35 +81,61 @@ void print()//use to test
 	}
 	//expm
 	for (int i = 1; i <= N; i++)
-		cout<< expm[i].name<<' '<<expm[i].company<<' '<<expm[i].password<<' '<<expm[i].phone_number<<endl;	
+		cout<< expm[i].name<<endl<<expm[i].company<<endl<<expm[i].password<<endl<<expm[i].phone_number<<endl<<endl;	
 	return ;
 }
 
-void welcome()
-{
-	cout<<"Time:";
+void login()
+{		
+	system("cls");
+	bool flag=false;
+
+	cout<<"时间:";
 	time_t t = time(nullptr);
     tm *now = localtime(&t); 
     cout << put_time(now, "%Y-%m-%d %H:%M:%S") << endl;
-	cout<<"Welcome to ";
-}
+	cout<<"欢迎使用外卖柜"<<endl;
+	cout<<"顾客按1，骑手按2"<<endl;
+	int identity;
+	cin>>identity;
 
-void login()
-{
-	cout<<"请快递员输入手机号"<<endl;
-
+	if(identity==1)
+	{		
+		flag=true;
+		delivery();
+		cout<<"D";
+		return;
+	}
+	if(identity==2)
+	{
+		flag=true;
+		customer();
+		return;
+	}
+	if(flag==false)
+	{
+		cout<<"输入错误，请重新输入";
+		Sleep(3000);
+		system("cls");
+		login();
+	}
+	
 }
 
 void delivery()
 {
-	login();
+	
+}
+
+void customer()
+{
+	
 }
 
 int	 main()
 {
 	initialize();
 	//print();//use to test
-	welcome();
-	delivery();
+	login();
 	return 0;
 }
