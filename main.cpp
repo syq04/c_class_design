@@ -15,7 +15,7 @@ struct window{
 */
 struct expressman {
 	string name;
-	int phone_number;
+	string phone_number;
 	string password;
 	string company;
 }expm[10000];//maxn
@@ -30,11 +30,11 @@ void initialize()
 			win[i][j].number = n;
 	//size
 	for (int i = 1; i <=W; i++)
-		win[1][i].size ='Small';
+		win[1][i].size ="Small";
 	for (int i = 1; i <= W; i++)
-		win[2][i].size = 'Normal';
+		win[2][i].size = "Normal";
 	for (int i = 1; i <= W; i++)
-		win[3][i] .size='Big';
+		win[3][i] .size="Big";
 	//state
 	for (int i = 1; i <= H; i++)
 		for (int j = 1; j <= W; j++, n++)
@@ -45,40 +45,37 @@ void initialize()
 	cin >> N;
 	
 	for (int i = 1; i <= N; i++)
-	{
-		string phone_n_temp;
-		cin>>expm[i].name>>expm[i].company>>phone_n_temp>>expm[i].password;
-		expm[i].phone_number=(int)phone_n_temp;
-
-	}
+		cin>>expm[i].name>>expm[i].company>>expm[i].password>>expm[i].phone_number;
 	fclose(stdin);
 	return;
 }
 
 void print()//use to test
 {
-	for (int i = 1; i <= H; i++)
-	{
-		for (int j = 1; j <= W; j++)
-		{
-			cout << win[i][j].number << ' ';
-		}
-		cout << endl;
-	}
-	for (int i = 1; i <= H; i++)
-	{
-		for (int j = 1; j <= W; j++)
-			cout<<win[i][j].size<<' ';
-		cout << endl;
-	}
-	for (int i = 1; i <= H; i++)
-	{
-		for (int j = 1; j <= W; j++)
-			cout << win[i][j].state << ' ';
-		cout << endl;
-	}
+	//windows
+	// for (int i = 1; i <= H; i++)
+	// {
+	// 	for (int j = 1; j <= W; j++)
+	// 	{
+	// 		cout << win[i][j].number << ' ';
+	// 	}
+	// 	cout << endl;
+	// }
+	// for (int i = 1; i <= H; i++)
+	// {
+	// 	for (int j = 1; j <= W; j++)
+	// 		cout<<win[i][j].size<<' ';
+	// 	cout << endl;
+	// }
+	// for (int i = 1; i <= H; i++)
+	// {
+	// 	for (int j = 1; j <= W; j++)
+	// 		cout << win[i][j].state << ' ';
+	// 	cout << endl;
+	// }
+	//epxm
 	for (int i = 1; i <= N; i++)
-		cout<< expm[i].name<<' '<<expm[i].phone_number<<' '<<expm[i].company<<' '<<expm[i].password<<endl;
+		cout<< expm[i].name<<' '<<expm[i].company<<' '<<expm[i].password<<' '<<expm[i].phone_number<<endl;	
 	return ;
 }
 
