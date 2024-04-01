@@ -35,6 +35,8 @@ int getRand(int min, int max) {
 void initialize()//use to initialize
 {
 	//window----------
+
+
 	//number
 	
 	int n = 1;
@@ -90,6 +92,7 @@ void print_test()//use to test
 	}
 	//expm
 	
+
 	for (int i = 1; i <= N; i++)
 		cout<< expm[i].name<<endl<<expm[i].company<<endl<<expm[i].password<<endl<<expm[i].phone_number<<endl<<endl;	
 	return ;
@@ -136,6 +139,7 @@ void password_out(){
 	outfile.close();
 }
 
+
 void put_in()
 {
 	cout<<"请选择要存入的窗格号：";
@@ -174,7 +178,9 @@ void put_in()
 	Sleep(1000);
 	return;
 }
+
 //?
+
 void delivery_login(int n)
 {	
 	system("cls");
