@@ -36,6 +36,7 @@ void initialize()//use to initialize
 {
 	//window----------
 	//number
+	
 	int n = 1;
 	for(int i=1;i<=H;i++)
 		for (int j = 1; j <= W; j++,n++)
@@ -52,6 +53,8 @@ void initialize()//use to initialize
 		for (int j = 1; j <= W; j++, n++)
 			win[i][j] .state= true;
 	//expm----
+	
+	
 	ifstream infile; 
    	infile.open("expressman.in");
 	infile>>N;
@@ -86,6 +89,7 @@ void print_test()//use to test
 		cout << endl;
 	}
 	//expm
+	
 	for (int i = 1; i <= N; i++)
 		cout<< expm[i].name<<endl<<expm[i].company<<endl<<expm[i].password<<endl<<expm[i].phone_number<<endl<<endl;	
 	return ;
@@ -158,7 +162,9 @@ void put_in()
 		put_in();
 	}
 	win[x][y].state=false;
+	
 	//print_state();
+	
 	cout<<endl<<"请输入顾客手机尾号后4位：";
 	cin>>win[x][y].phone_number;
 	win[x][y].password=getRand(1000,9999);
