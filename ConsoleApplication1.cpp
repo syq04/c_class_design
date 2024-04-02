@@ -1,6 +1,6 @@
 ﻿#include<bits/stdc++.h>
 #include <windows.h>
-#pragma warning(disable:4996)//use in visual code
+//#pragma warning(disable:4996)//use in visual code
 using namespace std;
 
 const int  W = 4, H = 4;//height,width,number of expressman
