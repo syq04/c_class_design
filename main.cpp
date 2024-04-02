@@ -1,6 +1,6 @@
 #include<bits/stdc++.h>
 #include <windows.h>
-//#pragma warning(disable:4996)//use in visual code
+#pragma warning(disable:4996)//use in visual code
 using namespace std;
 
 const int  W = 4,H = 4;//height,width,number of expressman
@@ -186,7 +186,6 @@ void delivery_login(int n)
 	system("cls");
 	
 	cout<<expm[n].name<<",您好。"<<endl;
-	cout<<"adsd0";
 	cout<<"您的电话号码是"<<expm[n].phone_number<<endl;
 	cout<<"请输入您的登录密码：";
 	string temp_pass;
