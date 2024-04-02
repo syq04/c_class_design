@@ -1,6 +1,6 @@
 #include<bits/stdc++.h>
 #include <windows.h>
-#pragma warning(disable:4996)//use in visual code
+//#pragma warning(disable:4996)//use in visual code
 using namespace std;
 
 const int  W = 4,H = 4;//height,width,number of expressman
@@ -45,11 +45,13 @@ void initialize()//use to initialize
 			win[i][j].number = n;
 	//size
 	for (int i = 1; i <=W; i++)
-		win[1][i].size ="Small";
+		win[1][i].size ="  Small ";
 	for (int i = 1; i <= W; i++)
-		win[2][i].size = "Normal";
+		win[2][i].size = " Normal ";
 	for (int i = 1; i <= W; i++)
-		win[3][i] .size="Big";
+		win[3][i] .size="   Big  ";
+	for (int i = 1; i <= W; i++)
+		win[4][i] .size="   Big  ";
 	//state
 	for (int i = 1; i <= H; i++)
 		for (int j = 1; j <= W; j++, n++)
@@ -116,6 +118,13 @@ void print_state()
 			else
 				cout<<"不可用";
 		}
+		cout<<"|";
+		cout<<endl;
+		for (int j = 1; j <= W; j++)
+		{
+			cout<<"|";
+			cout<<win[i][j].size;
+		}
 		cout<<'|'<<endl<<"----------------------------------------"<<endl;
 	}
 
@@ -169,8 +178,12 @@ void put_in()
 	
 	//print_state();
 	
-	cout<<endl<<"请输入顾客手机尾号后4位：";
+	cout<<endl<<"请输入顾客手机尾号后4位：";	
 	cin>>win[x][y].phone_number;
+	while(win[x][y].phone_number<1000||win[x][y].phone_number>9999){
+		cout<<"手机号错误，请重新输入"<<endl;
+		cin>>win[x][y].phone_number;		
+	}
 	win[x][y].password=getRand(1000,9999);
 	cout<<endl<<"顾客取件码为:"<<win[x][y].password;
 	password_out();
@@ -233,6 +246,10 @@ void customer()
 	cout<<"您好,取件请输入手机尾号后4位：";
 	int num;
 	cin>>num;
+	while(num<1000||num>9999){
+		cin>>num;
+		cout<<"手机号错误，请重新输入"<<endl;
+	}
 	int l,k;
 	bool flag=false;
 	for (int i = 1; i <= H; i++)
@@ -276,7 +293,10 @@ void login()
 		flag=true;
 		cout<<"请输入您的快递员编号:";
 		int t;
-		cin>>t;
+		do{
+			cin>>t;
+			cout<<"快递员编号错误，请重新输入"<<endl;
+		}while(t>=N);
 		delivery_login(t);
 		return;
 	}
