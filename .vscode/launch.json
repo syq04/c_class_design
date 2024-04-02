@@ -12,7 +12,7 @@
       "internalConsosleOptions": "neverOpen",
       "miDebuggerPath": "E:\\mingw64\\bin\\gdb.exe",
       "name": "single file debug",
-      "preLaunchTask": "single file build",
+      "preLaunchTask": "ascii check",
       "program": "${fileDirname}\\${fileBasenameNoExtension}.exe",
       "request": "launch",
       "stopAtEntry": false,
