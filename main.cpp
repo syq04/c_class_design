@@ -18,6 +18,7 @@ struct window {
 	bool state;
 	int phone_number;
 	int password;
+	int use_date[10000];
 }win[W + 1][W + 1];
 
 struct expressman {
@@ -25,6 +26,7 @@ struct expressman {
 	string phone_number;
 	string password;
 	string company;
+	
 }expm[10000];
 
 struct count{
@@ -44,6 +46,11 @@ void initialize()//use to initialize
 	cnt[3].company="YT";
 	cnt[4].company="JD";
 	cnt[5].company="YD";
+
+	for (int i = 1; i <= H; i++)
+		for (int j = 1; j <= W; j++)
+			for(int k=1;k<=9999;k++)
+				win[i][j].use_date[k]=0;
 
 	int n = 1;
 	for (int i = 1; i <= H; i++)
@@ -166,6 +173,13 @@ void password_out() {
 	outfile.close();
 }
 
+void cnt_use_time(int a,int b){
+	time_t nowtime;
+	time(&nowtime); //获取1970年1月1日0点0分0秒到现在经过的秒数
+	tm* p = localtime(&nowtime); //将秒数转换为本地时间,年从1900算起,需要+1900,月为0-11,所以要+1
+	win[a][b].use_date[(p->tm_mon + 1)*100+(p->tm_mday)]++;
+
+}
 
 void put_in()
 {
@@ -194,6 +208,7 @@ void put_in()
 	}
 	win[x][y].state = false;
 
+	cnt_use_time(x,y);
 
 	cout << endl << "请输入顾客手机尾号后4位：";
 	cin >> win[x][y].phone_number;
@@ -210,6 +225,11 @@ void put_in()
 	return;
 }
 
+void out_usedate(int a,int b,int d)
+{
+	cout<<"第"<<win[a][b].number<<"格在"<<d/100<<"月"<<d%100<<"日被用了"<<win[a][b].use_date[d]<<"次"<<endl;
+	system("pause");
+}
 
 void delivery_login(int n)
 {
@@ -317,7 +337,7 @@ void login()
 	cout << "欢迎使用外卖柜" << endl;
 	cout << "当前使用状态：" << endl;
 	print_state();
-	cout << "顾客按1，骑手按2,查询记录按3" << endl;
+	cout << "顾客按1，骑手按2,查询快递公司使用记录按3，查询快递柜使用记录按4" << endl;
 	int identity;
 	cin >> identity;
 
@@ -339,9 +359,30 @@ void login()
 		customer();
 		return;
 	}
-	if (identity == 3){
+	if (identity == 3)
+	{
 		flag = true;
 		print_cnt();
+	}
+	if(identity == 4)
+	{
+		flag = true;
+		cout<<"请输入需要查询窗口号和日期";		
+		int a,b,d,t;
+		cin>>t>>d;
+		for (int i = 1; i <= H; i++)
+			for (int j = 1; j <= W; j++)
+				if (win[i][j].number == t)
+				{
+					a = i, b = j;
+					break;
+				}
+		while(a > H||b>W||d<=0||d>=9999) {
+			cout << "输入错误请重新输入。";
+			Sleep(1000);
+			cin>>a>>b>>d;
+		}
+		out_usedate(a,b,d);
 	}
 	if (flag == false)
 	{
