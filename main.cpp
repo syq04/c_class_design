@@ -137,15 +137,14 @@ void print_state()
 }
 
 void record(string c,string t){
-	for(int j=1;j<=5;j++){
+	for(int j=1;j<=5;j++)
 		if(cnt[j].company==c)
 		{
 			cnt[j].time[cnt[j].i]=t;
-			cnt[j].i++;
-			
+			cnt[j].i++;			
 			break;
 		}
-	}
+	
 		
 }
 
