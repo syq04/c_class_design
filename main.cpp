@@ -149,6 +149,7 @@ void record(string c,string t){
 		
 }
 
+
 void password_out() {
 	ofstream outfile;
 	outfile.open("password.out");
