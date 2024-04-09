@@ -27,6 +27,11 @@ struct expressman {
 	string company;
 }expm[10000];
 
+struct count{
+	string company;
+	string time[100];
+	int i=1;
+}cnt[6];
 
 int getRand(int min, int max) {
 	return (rand() % (max - min + 1)) + min;
@@ -34,10 +39,11 @@ int getRand(int min, int max) {
 
 void initialize()//use to initialize
 {
-	//window----------
-
-
-	//number
+	cnt[1].company="SF";
+	cnt[2].company="ZT";
+	cnt[3].company="YT";
+	cnt[4].company="JD";
+	cnt[5].company="YD";
 
 	int n = 1;
 	for (int i = 1; i <= H; i++)
@@ -92,7 +98,6 @@ void print_test()//use to test
 			cout << win[i][j].state << ' ';
 		cout << endl;
 	}
-	//expm
 
 
 	for (int i = 1; i <= N; i++)
@@ -129,6 +134,19 @@ void print_state()
 	}
 
 	return;
+}
+
+void record(string c,string t){
+	for(int j=1;j<=5;j++){
+		if(cnt[j].company==c)
+		{
+			cnt[j].time[cnt[j].i]=t;
+			cnt[j].i++;
+			
+			break;
+		}
+	}
+		
 }
 
 void password_out() {
@@ -176,7 +194,6 @@ void put_in()
 	}
 	win[x][y].state = false;
 
-	//print_state();
 
 	cout << endl << "请输入顾客手机尾号后4位：";
 	cin >> win[x][y].phone_number;
@@ -187,12 +204,12 @@ void put_in()
 	win[x][y].password = getRand(1000, 9999);
 	cout << endl << "顾客取件码为:" << win[x][y].password;
 	password_out();
+	
 	cout << "存入完成";
 	Sleep(1000);
 	return;
 }
 
-//?
 
 void delivery_login(int n)
 {
@@ -201,6 +218,9 @@ void delivery_login(int n)
 	cout << expm[n].name << ",您好。" << endl;
 	cout << "您的电话号码是" << expm[n].phone_number << endl;
 	cout << "请输入您的登录密码：";
+	time_t now = time(0);
+    char* datetime = ctime(&now);
+	record(expm[n].company,datetime);
 	string temp_pass;
 	cin >> temp_pass;
 	if (temp_pass == expm[n].password)
@@ -215,6 +235,19 @@ void delivery_login(int n)
 		Sleep(1500);
 		delivery_login(n);
 	}
+}
+
+void print_cnt()
+{
+	for(int j=1;j<=5;j++)
+	{
+		cout<<cnt[j].company<<"使用记录："<<endl;
+		for(int k=1;k<=cnt[j].i;k++)
+		{
+			cout<<cnt[j].time[k]<<endl;
+		}
+	}
+	system("pause");
 }
 
 void get_out(int x, int y)
@@ -284,7 +317,7 @@ void login()
 	cout << "欢迎使用外卖柜" << endl;
 	cout << "当前使用状态：" << endl;
 	print_state();
-	cout << "顾客按1，骑手按2" << endl;
+	cout << "顾客按1，骑手按2,查询记录按3" << endl;
 	int identity;
 	cin >> identity;
 
@@ -306,6 +339,10 @@ void login()
 		customer();
 		return;
 	}
+	if (identity == 3){
+		flag = true;
+		print_cnt();
+	}
 	if (flag == false)
 	{
 		cout << "输入错误，请重新输入";
@@ -321,7 +358,6 @@ void login()
 int	 main()
 {
 	initialize();
-	//print_test();
 	while (1)
 		login();
 	return 0;
