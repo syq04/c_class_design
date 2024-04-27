@@ -414,6 +414,39 @@ void data()
 	win[2][3].use_date[406].use_t[1].out_minute = 41;
 	win[2][3].use_date[406].use_t[1].out_sec = 14;
 	
+    win[3][4].use_date[215].use_t[1].in_hour = 15;
+	win[3][4].use_date[215].use_t[1].in_minute = 23;
+	win[3][4].use_date[215].use_t[1].in_sec = 13;
+	win[3][4].use_date[215].use_t[1].out_hour = 17;
+	win[3][4].use_date[215].use_t[1].out_minute = 45;
+	win[3][4].use_date[215].use_t[1].out_sec = 18;
+	
+	win[4][4].use_date[401].use_t[1].in_hour = 12;
+	win[4][4].use_date[401].use_t[1].in_minute = 27;
+	win[4][4].use_date[401].use_t[1].in_sec = 52;
+	win[4][4].use_date[401].use_t[1].out_hour = 19;
+	win[4][4].use_date[401].use_t[1].out_minute = 41;
+	win[4][4].use_date[401].use_t[1].out_sec = 14;
+	win[4][4].use_date[401].use_t[2].in_hour = 15;
+	win[4][4].use_date[401].use_t[2].in_minute = 24;
+	win[4][4].use_date[401].use_t[2].in_sec = 27;
+	win[4][4].use_date[401].use_t[2].out_hour = 19;
+	win[4][4].use_date[401].use_t[2].out_minute = 43;
+	win[4][4].use_date[401].use_t[2].out_sec = 10; 
+	
+	win[1][2].use_date[117].use_t[1].in_hour = 16;
+	win[1][2].use_date[117].use_t[1].in_minute = 54;
+	win[1][2].use_date[117].use_t[1].in_sec = 23;
+	win[1][2].use_date[117].use_t[1].out_hour = 17;
+	win[1][2].use_date[117].use_t[1].out_minute = 31;
+	win[1][2].use_date[117].use_t[1].out_sec = 16;
+	
+	win[1][2].use_date[327].use_t[1].in_hour = 11;
+	win[1][2].use_date[327].use_t[1].in_minute = 52;
+	win[1][2].use_date[327].use_t[1].in_sec = 28;
+	win[1][2].use_date[327].use_t[1].out_hour = 18;
+	win[1][2].use_date[327].use_t[1].out_minute = 40;
+	win[1][2].use_date[327].use_t[1].out_sec = 21;
 	
 }
 
